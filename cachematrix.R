@@ -35,3 +35,32 @@ cacheSolve <- function(x, ...) {
 
         ## Return a matrix that is the inverse of 'x'
 }
+
+#Just adding script to check that the function is working
+n <- 64
+    mat <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
+    matCached <- makeMatrix(mat)
+    matSolved1 <- cacheSolve(matCached)
+    matSolved2 <- cacheSolve(matCached)
+    if (!identical(matSolved1, matSolved2))
+        message("Cached version does not match solved version")
+
+
+
+
+
+
+
+
+
+
+
+n <- 1024
+    mat <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
+    matCached <- makeMatrix(mat)
+    time1 <- system.time(matSolved1 <- cacheSolve(matCached))
+    time2 <- system.time(matSolved2 <- cacheSolve(matCached))
+    print(time1["user.self"])
+    print(time2["user.self"])
+if (!identical(matSolved1, matSolved2))
+        message("Cached version does not match solved version")
