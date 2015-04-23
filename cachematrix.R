@@ -1,7 +1,7 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Cache the inverse of a matrix to improve execution time if it is repeated
 
-## Write a short comment describing this function
+
+## First part - function makeCacheMatrix stores a Matrix as m for future function call
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -19,8 +19,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 }
 
-
-## Write a short comment describing this function
+## Second part - recall the matrix and compute the inverse and store as m
+## if the inverse matrix is called again - value is returned from cache
 
 cacheSolve <- function(x, ...) {
          m <- x$getinv()
@@ -37,30 +37,15 @@ cacheSolve <- function(x, ...) {
 }
 
 #Just adding script to check that the function is working
-n <- 64
-    mat <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
-    matCached <- makeMatrix(mat)
-    matSolved1 <- cacheSolve(matCached)
-    matSolved2 <- cacheSolve(matCached)
-    if (!identical(matSolved1, matSolved2))
-        message("Cached version does not match solved version")
-
-
-
-
-
-
-
-
-
-
 
 n <- 1024
     mat <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
-    matCached <- makeMatrix(mat)
+    matCached <- makeCacheMatrix(mat)
     time1 <- system.time(matSolved1 <- cacheSolve(matCached))
     time2 <- system.time(matSolved2 <- cacheSolve(matCached))
+        #Compare time difference
     print(time1["user.self"])
     print(time2["user.self"])
+        #Check value
 if (!identical(matSolved1, matSolved2))
         message("Cached version does not match solved version")
