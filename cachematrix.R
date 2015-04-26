@@ -1,16 +1,16 @@
 ## Cache the inverse of a matrix to improve execution time if it is repeated
 
 
-## First part - function makeCacheMatrix stores a Matrix as m for future function call
+## First part - function makeCacheMatrix stores a list of functions and caches the input in the main function
 #set m to null to reset previous stored values
-#create a list of 4 functions - set, get, setinv, getinv that recalls m as input for cacheSolve function
+#create a list of 4 functions - set, get, setinv, getinv that recalls m
 #set function
         #substitute x with y x in main function using "<<" 
         #reset m to null
 #get function
         #recall x value stored in main function
 #setinv function
-        #m as input for solve function
+        #m as input for solve function (inverse matrix)
 #getinv function
         #retrieve inverse of x (stored as m) from cache
 
@@ -30,8 +30,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 }
 
-## Second part - compute the inverse and store as m
-## if the inverse matrix is called again - value is returned from cache
+## Second part - check matrix inverse - recall from cache if already computed (m), calculate if not
+
 
 cacheSolve <- function(x, ...) {
          m <- x$getinv()
