@@ -41,11 +41,11 @@ cacheSolve <- function(x, ...) {
 n <- 1024
     mat <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
     matCached <- makeCacheMatrix(mat)
-    time1 <- system.time(matSolved1 <- cacheSolve(matCached))
-    time2 <- system.time(matSolved2 <- cacheSolve(matCached))
+    time_uncached <- system.time(matSolved1 <- cacheSolve(matCached))
+    time_cached <- system.time(matSolved2 <- cacheSolve(matCached))
         #Compare time difference
-    print(time1["user.self"])
-    print(time2["user.self"])
+    print(time_uncached["user.self"])
+    print(time_cached["user.self"])
         #Check value
 if (!identical(matSolved1, matSolved2))
         message("Cached version does not match solved version")
