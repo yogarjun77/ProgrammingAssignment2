@@ -2,6 +2,17 @@
 
 
 ## First part - function makeCacheMatrix stores a Matrix as m for future function call
+#set m to null to reset previous stored values
+#create a list of 4 functions - set, get, setinv, getinv that recalls m as input for cacheSolve function
+#set function
+        #substitute x with y x in main function using "<<" 
+        #reset m to null
+#get function
+        #recall x value stored in main function
+#setinv function
+        #m as input for solve function
+#getinv function
+        #retrieve inverse of x (stored as m) from cache
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -19,7 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 }
 
-## Second part - recall the matrix and compute the inverse and store as m
+## Second part - compute the inverse and store as m
 ## if the inverse matrix is called again - value is returned from cache
 
 cacheSolve <- function(x, ...) {
