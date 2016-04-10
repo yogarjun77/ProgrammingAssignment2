@@ -50,8 +50,8 @@ cacheSolve <- function(x, ...) {
 #Just adding script to check that the function is working
 
 n <- 1024
-    mat <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
-    matCached <- makeCacheMatrix(mat)
+    mat2 <- matrix(rnorm(1:(n*n)), nrow=n, ncol=n)
+    matCached <- makeCacheMatrix(mat2)
     time_uncached <- system.time(matSolved1 <- cacheSolve(matCached))
     time_cached <- system.time(matSolved2 <- cacheSolve(matCached))
         #Compare time difference
